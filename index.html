@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইউজার রেজিস্ট্রেশন ফর্ম</title>
+    <style>
+        :root {
+            --primary: #4a6bdf;
+            --primary-dark: #3a56b2;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --white: #ffffff;
+            --gray: #e0e0e0;
+            --error: #dc3545;
+            --success: #28a745;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', 'SolaimanLipi', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 107, 223, 0.2);
+        }
+        
+        button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .error {
+            color: var(--error);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            color: var(--success);
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            input, select, button {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ইউজার রেজিস্ট্রেশন ফর্ম</h1>
+        <form id="userForm">
+            <div class="form-group">
+                <label for="name">পূর্ণ নাম</label>
+                <input type="text" id="name" placeholder="শুধুমাত্র বাংলা/ইংরেজি বর্ণ এবং স্পেস" required>
+                <div class="error" id="name-error">নামে শুধুমাত্র বর্ণ এবং স্পেস ব্যবহার করুন (ন্যূনতম ৩ অক্ষর)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">মোবাইল নম্বর</label>
+                <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
+                <div class="error" id="phone-error">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">ইমেইল</label>
+                <input type="email" id="email" placeholder="example@domain.com" required>
+                <div class="error" id="email-error">সঠিক ইমেইল ঠিকানা লিখুন</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">আপনার অবস্থান</label>
+                <select id="location" required>
+                    <option value="">-- নির্বাচন করুন --</option>
+                    <option value="যশোর সদর">যশোর সদর</option>
+                    <option value="মনিরামপুর">মনিরামপুর</option>
+                    <option value="কেশবপুর">কেশবপুর</option>
+                    <option value="অভয়নগর">অভয়নগর</option>
+                    <option value="ঝিকড়্গাছা">ঝিকড়্গাছা</option>
+                    <option value="শার্শা">শার্শা</option>
+                    <option value="বাঘাড়পাড়া">বাঘাড়পাড়া</option>
+                    <option value="চৌগাছা">চৌগাছা</option>
+                    <option value="অন্য জেলা">অন্য জেলা</option>
+                </select>
+                <div class="error" id="location-error">অবস্থান নির্বাচন করুন</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="bloodGroup">রক্তের গ্রুপ</label>
+                <select id="bloodGroup" required>
+                    <option value="">-- নির্বাচন করুন --</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+                <div class="error" id="bloodGroup-error">রক্তের গ্রুপ নির্বাচন করুন</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="donatedBefore">আপনি কি আগে রক্ত দিয়েছেন?</label>
+                <select id="donatedBefore" required>
+                    <option value="">-- নির্বাচন করুন --</option>
+                    <option value="হ্যাঁ">হ্যাঁ</option>
+                    <option value="না">না</option>
+                </select>
+                <div class="error" id="donatedBefore-error">অনুগ্রহ করে নির্বাচন করুন</div>
+            </div>
+            
+            <button type="submit">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+            <div class="success-message" id="success-message">রেজিস্ট্রেশন সফল হয়েছে!</div>
+        </form>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <script>
+        // Firebase কনফিগারেশন
+        const firebaseConfig = {
+            apiKey: "AIzaSyC3d-N7WLSjIYeFVCg2YDrDXiUkJHXGc3A",
+            authDomain: "signup-61f32.firebaseapp.com",
+            databaseURL: "https://signup-61f32-default-rtdb.firebaseio.com",
+            projectId: "signup-61f32",
+            storageBucket: "signup-61f32.appspot.com",
+            messagingSenderId: "672981807778",
+            appId: "1:672981807778:web:2351f61becb5066cdc1dfb",
+            measurementId: "G-N3783LYJMB"
+        };
+
+        // Firebase ইনিশিয়ালাইজ করুন
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // ভ্যালিডেশন ফাংশন
+        function convertBanglaToEnglishDigits(input) {
+        const banglaDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+        const englishDigits = ['0','1','2','3','4','5','6','7','8','9'];
+        return input.replace(/[০-৯]/g, d => englishDigits[banglaDigits.indexOf(d)]);
+        }
+
+
+
+        function validateName(name) {
+            const pattern = /^[A-Za-z\u0980-\u09FF\s]{3,}$/;
+            return pattern.test(name.trim());
+
+        }
+
+        function validatePhone(phone) {
+            const converted = convertBanglaToEnglishDigits(phone);
+            return /^01[3-9]\d{8}$/.test(converted);
+
+        }
+3
+        function validateEmail(email) {
+            email = email.trim().toLowerCase();
+            const pattern = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook)\.(com|co\.uk|in)$/;
+            return pattern.test(email);
+
+        }
+
+        function validateSelect(selectId) {
+            const select = document.getElementById(selectId);
+            return select.value !== "";
+        }
+
+        // সব এরর মেসেজ হাইড করুন
+        function hideAllErrors() {
+            document.querySelectorAll('.error').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+
+        // ফর্ম সাবমিট হ্যান্ডলার
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // সব এরর মেসেজ লুকানো
+            hideAllErrors();
+            
+            // ভ্যালিডেশন চেক
+            let isValid = true;
+            
+            // নাম ভ্যালিডেশন
+            const name = document.getElementById('name').value;
+            if (!validateName(name)) {
+                document.getElementById('name-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // ফোন ভ্যালিডেশন
+            const phone = document.getElementById('phone').value;
+            if (!validatePhone(phone)) {
+                document.getElementById('phone-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // ইমেইল ভ্যালিডেশন
+            const email = document.getElementById('email').value;
+            if (!validateEmail(email)) {
+                document.getElementById('email-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // ড্রপডাউন ভ্যালিডেশন
+            if (!validateSelect('location')) {
+                document.getElementById('location-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!validateSelect('bloodGroup')) {
+                document.getElementById('bloodGroup-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!validateSelect('donatedBefore')) {
+                document.getElementById('donatedBefore-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                // প্রথম এরর ফিল্ডে ফোকাস করুন
+                const firstError = document.querySelector('.error[style="display: block;"]');
+                if (firstError) {
+                    const inputId = firstError.id.replace('-error', '');
+                    document.getElementById(inputId).focus();
+                }
+                return;
+            }
+
+            // ইউনিক ইউজার ID জেনারেট
+            const userId = Date.now();
+            
+            const userData = {
+                userId: userId,
+                name: name,
+                phone: phone,
+                email: email,
+                location: document.getElementById('location').value,
+                bloodGroup: document.getElementById('bloodGroup').value,
+                donatedBefore: document.getElementById('donatedBefore').value,
+                registrationDate: new Date().toISOString()
+            };
+
+            // ডাটাবেসে ডাটা সেভ (users নোডে)
+            database.ref('users/' + userId).set(userData)
+                .then(() => {
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('userForm').reset();
+                    
+                    // 3 সেকেন্ড পর সাফল্য মেসেজ লুকানো
+                    setTimeout(() => {
+                        document.getElementById('success-message').style.display = 'none';
+                    }, 3000);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert('ত্রুটি: ' + error.message);
+                });
+        });
+
+        // ফর্ম ফিল্ড চেঞ্জ হলে এরর মেসেজ লুকানো
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('input', function() {
+                const errorId = this.id + '-error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
+            });
+        });
+
+        // নাম ফিল্ডে শুধুমাত্র বর্ণ এবং স্পেস অনুমোদিত
+        document.getElementById('name').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^a-zA-Z\u0080-\uFFFF\s]/g, '');
+        });
+    </script>
+</body>
+</html>
